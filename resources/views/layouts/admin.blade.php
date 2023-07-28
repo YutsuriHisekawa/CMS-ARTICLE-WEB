@@ -90,8 +90,15 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('login') }}">Logout</a>
+                    <button class="btn btn-secondary"  data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); 
+                    document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                  </form>
                 </div>
             </div>
         </div>
@@ -115,6 +122,7 @@
     <script src="{{asset('backend/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     @stack('scripts')
 </body>

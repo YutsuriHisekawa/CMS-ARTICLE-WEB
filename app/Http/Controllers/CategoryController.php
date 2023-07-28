@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::paginate(10);
+        $category = Category::paginate(5);
         return view('admin.category.index', compact('category'));
     }
 
@@ -31,14 +31,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //dd($request->all()); for test
-
+        $this->validate($request, [
+            'name' => 'required|min:3',
+        ]);
         $category = Category::create
         ([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name)
-        ]);
+                'name' => $request->name,
+                'slug' => Str::slug($request->name)
+            ]);
 
-        return redirect()->back();
+        return redirect('category')->with('success', 'Data berhasil di Tambah');
     }
 
     /**
@@ -52,24 +54,38 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+        $category = Category::findorfail($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        return 'asdasd';
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        $category_data = [
+            'name' => $request->name,
+            'slug' => Str::slug($request->name)
+        ];
+
+        Category::whereId($id)->update($category_data);
+
+        return redirect()->route('admin.category.index')->with('success', 'Data berhasil di Edit');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $category = Category::findorfail($id);
+        $category->delete();
+
+        return redirect('category')->with('success', 'Data berhasil di Hapus');
     }
 }
