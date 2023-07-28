@@ -19,7 +19,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+    <link href="{{asset('backend/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -45,11 +46,6 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Home</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
 
                     <!-- Content Row -->
 @yield('content')
@@ -95,14 +91,14 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
+     <!-- Bootstrap core JavaScript-->
+     <script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
@@ -116,8 +112,11 @@
 
     <!-- Page level custom scripts -->
     <script src="{{asset('backend/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('backend/js/demo/chart-pie-demo.js')}}"></script>
+    <script src="{{asset('backend/js/demo/chart-area-demo.js')}}"></script>
+    <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 
+    @stack('scripts')
 </body>
 
 </html>

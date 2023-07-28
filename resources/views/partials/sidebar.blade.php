@@ -54,8 +54,8 @@
         <div id="collapse2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Category</h6>
-                <a class="collapse-item" href="buttons.html">Create Category </a>
-                <a class="collapse-item" href="cards.html"> List Category</a>
+                <a class="collapse-item" href="{{route('category.create')}}">Create Category </a>
+                <a class="collapse-item" href="{{route('admin.category.index')}}"> List Category</a>
             </div>
         </div>
     </li>

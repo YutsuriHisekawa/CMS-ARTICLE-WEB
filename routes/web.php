@@ -25,6 +25,10 @@ Route::get('/dashboard', function () {
 
 Route::get('admin/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])
     ->name('admin.dashboard.index');
+    Route::get('admin/category', [\App\Http\controllers\CategoryController::class, 'index'])
+    ->name('admin.category.index');
+
+
 
 
 

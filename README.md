@@ -2,7 +2,7 @@
 
 ## Hello Im Fahrizal
 
-Hello , this is my project laravel.
+Hello , this is my project ARTICLES WEB using laravel Breeze. 
 
 
 ## Instalasi
